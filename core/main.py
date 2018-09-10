@@ -10,7 +10,7 @@ if __name__ == "__main__":
   wb = Workbook()
   sheet = wb.active
   sheet.column_dimensions['B'].width = 60
-  for i in range(250):
-    for j in range(3):
+  for i in range(len(html_doc)):
+    for j in range(len(html_doc[i])):
       sheet.cell(row=i + 1, column=j + 1).value = html_doc[i][j]
-  wb.save('imdb.xlsx')
+  wb.save('E:\IMDB TOP 250\imdb.xlsx')
