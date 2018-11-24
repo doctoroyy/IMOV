@@ -1,9 +1,7 @@
-from urllib import request
-
+import requests
 
 class handle:
-  @staticmethod
   def get_html_doc(url):
-    response = request.urlopen(url)
-    html_doc = response.read().decode('utf-8')
+    resopnse = requests.get(url)
+    html_doc = resopnse.text
     return html_doc
