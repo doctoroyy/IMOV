@@ -1,6 +1,8 @@
+import random
 import re
+import requests
 from openpyxl import Workbook
-from bin.tool import handle
+from time import sleep
 
 
 def find_all_by_pat(pat, string):
@@ -8,40 +10,60 @@ def find_all_by_pat(pat, string):
   return res
 
 
-def get_douban_html(query_name):
-  url = 'https://www.douban.com/search?cat=1002&q='
+def get_html_doc(url):
+  pro = ['122.152.196.126', '114.215.174.227', '119.185.30.75']
+  head = {
+    'user-Agent': 'Mozilla/5.0(Windows NT 10.0;Win64 x64)AppleWebkit/537.36(KHTML,like Gecko) chrome/58.0.3029.110 Safari/537.36'
+  }
+  resopnse = requests.get(url, proxies={'http': random.choice(pro)}, headers=head)
+  resopnse.encoding = 'utf-8'
+  html_doc = resopnse.text
+  return html_doc
 
-  douban_search_res = handle.get_html_doc(url + query_name)
+
+def get_douban_html(query_name):
+  url = 'https://www.douban.com/search?cat=1002&q=%s' % query_name
+  douban_search_res = get_html_doc(url)
   return douban_search_res
 
 
-def get_chinise_name(pat, quer_name):
-  html_doc = get_douban_html(quer_name)
-  res_list = find_all_by_pat(pat, html_doc)
-  return res_list
+def get_chinese_name(pat, doc):
+  res_list = find_all_by_pat(pat, doc)
+  try:
+    return res_list[1]
+  except:
+    return ' '
+
+
+def get_director_name(pat, doc):
+  res = find_all_by_pat(pat, doc)
+  try:
+    return res[0].split('/')[1]
+  except:
+    return ' '
 
 
 if __name__ == "__main__":
   url = "https://www.imdb.com/chart/top"
-  imdb_doc = handle.get_html_doc(url)
+  imdb_doc = get_html_doc(url)
   pat = r'<td class="titleColumn">\s*(.*)..*\s*.*\s*title=".*" >(.*)</a>.*\s*<span class="secondaryInfo">\((.*)\)</span>'
   res = find_all_by_pat(pat, imdb_doc)
+  pat2 = r'qcat.*\s*.*>(.*?)\s*</a>'
+  pat3 = '<span\s*class="subject-cast">(.*)</span>'
+  for i in range(len(res)):
+    doc = get_douban_html(res[i][1])
+    chinise_name = get_chinese_name(pat2, doc)
+    director_name = get_director_name(pat3, doc)
+    res[i] = list(res[i])
+    res[i].insert(1, chinise_name)
+    res[i].insert(3, director_name)
+    print(res[i])
+    sleep(random.random() * 1.2)
+
   wb = Workbook()
   sheet = wb.active
   sheet.column_dimensions['B'].width = 60
   sheet.column_dimensions['C'].width = 25
-  pat1 = '>(.*)\s*</a>\s*<span class="ic-mark ic-movie-mark">可播放</span>'
-  pat2 = r'qcat.*\s*.*>(.*)</a>'
-  for i in range(len(res)):
-    chinise_name = get_chinise_name(pat2, res[i][1])
-
-    if chinise_name == []:
-      chinise_name = ['', '']
-    res[i] = list(res[i])
-    res[i].insert(2, chinise_name[1])
-    # res[i].append(chinise_name[1])
-    print(res[i])
-
   for i in range(len(res)):
     for j in range(len(res[i])):
       sheet.cell(row=i + 1, column=j + 1).value = res[i][j]
