@@ -30,5 +30,6 @@ jobs:
     - name: Run imov
       run: |
         sudo apt-get install python3
+        pip3 install setuptools
         pip3 install imov
         imov
