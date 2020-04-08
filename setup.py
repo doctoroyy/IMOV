@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
   name='imov',
-  version='0.0.3',
+  version='0.0.4',
   packages=find_packages(),
   entry_points={
     'console_scripts': [
@@ -14,6 +14,7 @@ setup(
     "requests",
     "openpyxl",
     "lxml",
+    "setuptools",
   ],
   url='https://github.com/doctoroyy/IMDB-TOP-250',
   author='doctoroyy',

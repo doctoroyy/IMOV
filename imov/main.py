@@ -43,7 +43,7 @@ def get_director_name(pat, doc):
     return ' '
 
 
-def main():
+def save():
   url = "https://www.imdb.com/chart/top"
   imdb_doc = get_html_doc(url)
   # print(imdb_doc)
@@ -68,4 +68,4 @@ def main():
   for i in range(len(res)):
     for j in range(len(res[i])):
       sheet.cell(row=i + 1, column=j + 1).value = res[i][j]
-  wb.save('imdb_%s.xlsx' % type)
+  wb.save('imdb_top_250.xlsx')
