@@ -206,11 +206,11 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.demo" />
-      <item itemvalue="Python.IOTest" />
       <item itemvalue="Python.IOTest2" />
-      <item itemvalue="Python.query_for_imdb" />
+      <item itemvalue="Python.IOTest" />
+      <item itemvalue="Python.demo" />
       <item itemvalue="Python.main" />
+      <item itemvalue="Python.query_for_imdb" />
     </list>
     <recent_temporary>
       <list>

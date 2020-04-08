@@ -1,5 +1,5 @@
-from imov.main import main
+from imov.main import save
 
 
 def run():
-   main()
+   save()
