@@ -29,6 +29,6 @@ jobs:
         version: 3.6.0
     - name: Run imov
       run: |
-        pyenv global 3.6.0
-        pip install imov
+        sudo apt-get install python3
+        pip3 install imov
         imov
