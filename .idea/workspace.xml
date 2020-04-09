@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ff6075f-7702-4064-8a51-6e5c07110630" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/main.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/main.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/imov/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/imov/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/imov-0.0.3-py2-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/imov-0.0.3.tar.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imov.egg-info/PKG-INFO" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imov.egg-info/SOURCES.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imov.egg-info/dependency_links.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imov.egg-info/entry_points.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imov.egg-info/requires.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imov.egg-info/top_level.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/imov/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/imov/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
     </list>
@@ -169,7 +159,7 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/core" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/imov" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -206,11 +196,11 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.IOTest2" />
-      <item itemvalue="Python.IOTest" />
       <item itemvalue="Python.demo" />
-      <item itemvalue="Python.main" />
+      <item itemvalue="Python.IOTest" />
+      <item itemvalue="Python.IOTest2" />
       <item itemvalue="Python.query_for_imdb" />
+      <item itemvalue="Python.main" />
     </list>
     <recent_temporary>
       <list>
@@ -298,7 +288,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="加上中文名获取方法" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/IMDB_TOP_250$main.coverage" NAME="main Coverage Results" MODIFIED="1586343706285" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core" />
+    <SUITE FILE_PATH="coverage/IMDB_TOP_250$main.coverage" NAME="main Coverage Results" MODIFIED="1586408702479" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/imov" />
   </component>
   <component name="regexState">
     <option name="map">
