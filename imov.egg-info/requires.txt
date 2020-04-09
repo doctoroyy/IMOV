@@ -1,4 +1,0 @@
-requests
-openpyxl
-lxml
-setuptools
