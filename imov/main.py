@@ -63,19 +63,21 @@ def get_douban_info(query_name):
 
 
 def save_html(res):
-  html_str = """<table><thead>
+  html_str = """<table width="100%" cellpadding="2" style="border-collapse: collapse">
+                  <thead>
                   <tr>
-                  <th align="center">排名</th>
-                  <th align="center">影片名(中)</th>
-                  <th align="center">影片名(英)</th>
-                  <th align="center">导演</th>
-                  <th align="center">年份</th>
+                      <th style="background-color: #f7f7f7; font-size: 18px; height: 80px" align="center">排名</th>
+                      <th style="background-color: #f7f7f7;font-size: 18px" align="center">影片名(中)</th>
+                      <th style="background-color: #f7f7f7;font-size: 18px" align="center">影片名(英)</th>
+                      <th style="background-color: #f7f7f7;font-size: 18px" align="center">导演</th>
+                      <th style="background-color: #f7f7f7;font-size: 18px" align="center">年份</th>
                   </tr>
-                </thead><tbody>"""
+                  </thead>
+                <tbody>"""
   for i in range(len(res)):
-    html_str += '<tr>'
+    html_str += '<tr style="height: 60px">'
     for j in range(len(res[i])):
-      html_str += '<td align="center">%s</td>' % res[i][j]
+      html_str += '<td style="padding: 4px 8px;border-width: 1px; border-style:  solid; border-color:  #f4f4f4;" align="center">%s</td>' % res[i][j]
     html_str += '</tr>'
   html_str += '</tbody></table>'
   with open('imdb_top_250.html', 'wb+') as f:
