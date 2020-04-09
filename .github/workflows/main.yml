@@ -34,7 +34,7 @@ jobs:
         username: ${{ secrets.MAIL_USERNAME }}
         password: ${{ secrets.MAIL_PASSWORD }}
         subject: IMDB-TOP-250 (${{env.REPORT_DATE}})
-        body: file://README.md
+        body: file://imdb_top_250.html
         to: 1445245708@qq.com
         from: GitHub Actions
         content_type: text/html
