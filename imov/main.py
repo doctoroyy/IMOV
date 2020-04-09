@@ -78,8 +78,8 @@ def save_html(res):
       html_str += '<td align="center">%s</td>' % res[i][j]
     html_str += '</tr>'
   html_str += '</tbody></table>'
-  with open('imdb_top_250.html', 'w+', encoding='utf-8') as f:
-    f.write(html_str)
+  with open('imdb_top_250.html', 'wb+') as f:
+    f.write(html_str.encode('utf-8'))
 
 
 def save():
