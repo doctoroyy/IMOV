@@ -12,11 +12,11 @@ def find_all_by_pat(pat, string):
 
 
 def get_html_doc(url):
-  pro = ['122.152.196.126', '114.215.174.227', '119.185.30.75']
+  proxies = ['122.152.196.126', '114.215.174.227', '119.185.30.75']
   head = {
     'user-Agent': 'Mozilla/5.0(Windows NT 10.0;Win64 x64)AppleWebkit/537.36(KHTML,like Gecko) chrome/58.0.3029.110 Safari/537.36'
   }
-  resopnse = requests.get(url, proxies={'http': random.choice(pro)}, headers=head)
+  resopnse = requests.get(url, proxies={'http': random.choice(proxies)}, headers=head)
   resopnse.encoding = 'utf-8'
   html_doc = resopnse.text
   return html_doc
@@ -87,21 +87,25 @@ def save_html(res):
 def save():
   url = "https://www.imdb.com/chart/top"
   imdb_doc = get_html_doc(url)
-  pat = r'<td class="titleColumn">\s*(.*)..*\s*.*\s*title=".*" >(.*)</a>.*\s*<span class="secondaryInfo">\((.*)\)</span>'
-  res = find_all_by_pat(pat, imdb_doc)
-  for i in range(len(res)):
-    info = get_douban_info(res[i][1])
+  pat = r'<td class="titleColumn">\s*(.*)..*\s*.*<a\s.*href="/title/(.*)/.*"\s*title=".*" >(.*)</a>.*\s*<span class="secondaryInfo">\((.*)\)</span>'
+  movie_tuples = find_all_by_pat(pat, imdb_doc)
+  print(movie_tuples)
+  for i in range(len(movie_tuples)):
+    # ('1', 'tt0111161', 'The Shawshank Redemption', '1994')
+    info = get_douban_info(movie_tuples[i][1])
     chinese_name = info['chineseName']
     director_name = info['directorName']
-    res[i] = list(res[i])
-    res[i].insert(1, chinese_name)
-    res[i].insert(3, director_name)
-    print(res[i])
+    movie_tuples[i] = list(movie_tuples[i])
+    # 删除 IMDB 号，开始插入中文名
+    movie_tuples[i].pop(1)
+    movie_tuples[i].insert(1, chinese_name)
+    movie_tuples[i].insert(3, director_name)
+    print(movie_tuples[i])
     sleep(random.random() * 1.2)
   wb = Workbook()
   sheet = wb.active
-  save_html(res)
-  for i in range(len(res)):
-    for j in range(len(res[i])):
-      sheet.cell(row=i + 1, column=j + 1).value = res[i][j]
+  save_html(movie_tuples)
+  for i in range(len([('排名', '影片名（中）', '影片名（英）', '导演', '上映年份')] + movie_tuples)):
+    for j in range(len(movie_tuples[i])):
+      sheet.cell(row=i + 1, column=j + 1).value = movie_tuples[i][j]
   wb.save('imdb_top_250.xlsx')
