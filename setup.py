@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
   name='imov',
-  version='0.0.8',
+  version='0.1.4',
   packages=find_packages(),
   entry_points={
     'console_scripts': [

@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9ff6075f-7702-4064-8a51-6e5c07110630" name="Default" comment="加上中文名获取方法">
-      <change beforePath="$PROJECT_DIR$/.idea/imdb.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/imdb.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imov/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/imov/main.py" afterDir="false" />
-    </list>
+    <list default="true" id="9ff6075f-7702-4064-8a51-6e5c07110630" name="Default" comment="加上中文名获取方法" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -281,6 +275,16 @@
     <MESSAGE value="modify" />
     <MESSAGE value="加上中文名获取方法" />
     <option name="LAST_COMMIT_MESSAGE" value="加上中文名获取方法" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/setup.py</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="regexState">
     <option name="map">

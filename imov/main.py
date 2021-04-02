@@ -65,13 +65,13 @@ def get_douban_info(query_name):
 def save_html(res):
   html_str = """<table width="100%" cellpadding="2" style="border-collapse: collapse">
                   <thead>
-                  <tr>
+                    <tr>
                       <th style="background-color: #f7f7f7; font-size: 18px; height: 80px" align="center">排名</th>
                       <th style="background-color: #f7f7f7;font-size: 18px" align="center">影片名(中)</th>
                       <th style="background-color: #f7f7f7;font-size: 18px" align="center">影片名(英)</th>
                       <th style="background-color: #f7f7f7;font-size: 18px" align="center">导演</th>
                       <th style="background-color: #f7f7f7;font-size: 18px" align="center">年份</th>
-                  </tr>
+                    </tr>
                   </thead>
                 <tbody>"""
   for i in range(len(res)):
@@ -84,12 +84,7 @@ def save_html(res):
     f.write(html_str.encode('utf-8'))
 
 
-def save():
-  url = "https://www.imdb.com/chart/top"
-  imdb_doc = get_html_doc(url)
-  pat = r'<td class="titleColumn">\s*(.*)..*\s*.*<a\s.*href="/title/(.*)/.*"\s*title=".*" >(.*)</a>.*\s*<span class="secondaryInfo">\((.*)\)</span>'
-  movie_tuples = find_all_by_pat(pat, imdb_doc)
-  print(movie_tuples)
+def fill_other_info(movie_tuples):
   for i in range(len(movie_tuples)):
     # ('1', 'tt0111161', 'The Shawshank Redemption', '1994')
     info = get_douban_info(movie_tuples[i][1])
@@ -102,10 +97,23 @@ def save():
     movie_tuples[i].insert(3, director_name)
     print(movie_tuples[i])
     sleep(random.random() * 1.2)
+
+
+def save_to_excel(movie_tuples):
   wb = Workbook()
   sheet = wb.active
   save_html(movie_tuples)
-  for i in range(len([('排名', '影片名（中）', '影片名（英）', '导演', '上映年份')] + movie_tuples)):
+  movie_tuples = [('排名', '影片名（中）', '影片名（英）', '导演', '上映年份')] + movie_tuples
+  for i in range(len(movie_tuples)):
     for j in range(len(movie_tuples[i])):
       sheet.cell(row=i + 1, column=j + 1).value = movie_tuples[i][j]
   wb.save('imdb_top_250.xlsx')
+
+
+def save():
+  url = "https://www.imdb.com/chart/top"
+  imdb_doc = get_html_doc(url)
+  pat = r'<td class="titleColumn">\s*(.*)..*\s*.*<a\s.*href="/title/(.*)/.*"\s*title=".*" >(.*)</a>.*\s*<span class="secondaryInfo">\((.*)\)</span>'
+  movie_tuples = find_all_by_pat(pat, imdb_doc)
+  fill_other_info(movie_tuples)
+  save_to_excel(movie_tuples)
